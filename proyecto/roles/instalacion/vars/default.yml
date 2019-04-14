@@ -1,0 +1,3 @@
+---
+# roles/instalacion/vars/default.yml
+apache_package_name: apache2

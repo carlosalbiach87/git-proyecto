@@ -1,0 +1,3 @@
+---
+# roles/instalacion/vars/RedHat.yml
+apache_package_name: httpd

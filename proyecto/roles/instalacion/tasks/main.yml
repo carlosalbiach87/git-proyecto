@@ -1,7 +1,16 @@
 ---
+# Este bucle va a ser el que permita a Ansible elegir el nombre del paquete segun distribución.
+- include_vars: "{{ item }}"
+  with_first_found:
+    - "../vars/{{ ansible_distribution }}-{{ ansible_distribution_major_version | int}}.yml"
+    - "../vars/{{ ansible_distribution }}.yml"
+    - "../vars/{{ ansible_os_family }}.yml"
+    - "../vars/default.yml"
+  when: apache_package_name is not defined
+
 # tasks file for instalacion
-- name: Instalacion de ntp.
-  package: name=ntp state=present
+- name: Instalacion de chrony.
+  package: name=chrony state=present
 
 # tasks file for instalacion
 - name: Instalacion de vim.
@@ -11,3 +20,6 @@
 - name: Instalacion de nano.
   package: name=nano state=present
 
+# Carga una variable dependiendo del OS, si no, carga una por defecto.
+- name: Instalacion de Apache
+  package: name={{ apache_package_name }} state=latest
