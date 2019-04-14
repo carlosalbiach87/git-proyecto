@@ -1,0 +1,13 @@
+---
+# tasks file for instalacion
+- name: Instalacion de ntp.
+  package: name=ntp state=present
+
+# tasks file for instalacion
+- name: Instalacion de vim.
+  package: name=vim state=present
+
+# tasks file for instalacion
+- name: Instalacion de nano.
+  package: name=nano state=present
+

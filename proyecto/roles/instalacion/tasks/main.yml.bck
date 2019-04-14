@@ -1,0 +1,10 @@
+---
+# tasks file for instalacion
+- name: Instalacion de paquetes.
+  package: name={{item}} state=absent
+  with_items:
+  - ntp
+  - vim
+  - nano
+
+
